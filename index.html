@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="FaithDiff for Image Super-Resolution">
+  <meta name="keywords" content="FaithDiff, Classic Film Rejuvenation, Old Photo Revival, Social Media Restoration, Image Enhancement">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FaithDiff for Image Super-Resolution</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<!--   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+
+  </script> -->
+  <style>
+  .hr {width: 100%; height: 1px; margin: 48px 0; background-color: #d6dbdf;}
+  </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./assets/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- custom css file  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/twentytwenty.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop head">
+      <div class="columns is-centered">
+        <div class="column has-text-centered head">
+          <br>
+          <h1 class="title is-1 publication-title"> 
+            <font color="#fb5a42">FaithDiff</font>: Unleashing 
+            <font color="#fb5a42">Diff</font>usion Priors for
+            <font color="#fb5a42">Faith</font>ful Image Super-resolution
+          </h1>
+
+          <div class="is-size-3 publication-authors">
+            <span class="author-block">
+              <a href="https://jychen9811.github.io/">Junyang Chen</a>,&nbsp;&nbsp;</span>
+            <span class="author-block">
+              <a href="https://jspan.github.io/">Jinshan Pan</a>,&nbsp;&nbsp;</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=ruebFVEAAAAJ&hl=zh-CN">Jiangxin Dong</a>,&nbsp;&nbsp;</span> 
+            <span class="author-block">
+          </div>
+
+          <div class="is-size-3 publication-authors">
+            <span class="author-block">IMAG, Nanjing University of Science and Technology </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="./xx.pdf" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href="#" target="_blank"
+                   class="is-size-5 external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <!-- Code Link. -->
+              <span class="link-block"> 
+                <a href="https://github.com/JyChen9811/FaithDiff/" target="_blank"
+                   class="is-size-5 external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <!-- Demo Link. -->
+              <span class="link-block">
+                <a href="#" target="_blank"
+                   class="is-size-5 external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <img src="./assets/images/hf.png">
+                  </span>
+                  <span>huggingface</span>
+                </a>
+              </span>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- first row -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Social Media Restoration</div>
+            <div class="image">
+              <img src="./assets/images/Social_media/Social_media_2/Social_media_Bicubic_2.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Social_media/Social_media_2/Social_media_Ours_2.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Social Media Restoration</div>
+            <div class="image">
+              <img src="./assets/images/Social_media/Social_media_4/Social_media_Bicubic_4.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Social_media/Social_media_4/Social_media_Ours_4.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Social Media Restoration</div>
+            <div class="image">
+              <img src="./assets/images/Social_media/Social_media_5/Social_media_Bicubic_5.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Social_media/Social_media_5/Social_media_Ours_5.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Social Media Restoration</div>
+            <div class="image">
+              <img src="./assets/images/Social_media/Social_media_1/Social_media_Bicubic_1.png" width="100%",>
+            </div>
+            <div class="image">
+              <img src="./assets/images/Social_media/Social_media_1/Social_media_Ours_1.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Social Media Restoration</div>
+            <div class="image">
+              <img src="./assets/images/Social_media/Social_media_6/Social_media_Bicubic_6.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Social_media/Social_media_6/Social_media_Ours_6.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Social Media Restoration</div>
+            <div class="image">
+              <img src="./assets/images/Social_media/Social_media_8/Social_media_Bicubic_8.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Social_media/Social_media_8/Social_media_Ours_8.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Old Photo Revival</div>
+            <div class="image">
+              <img src="./assets/images/Old_photo/Old_photo_1/Old_Photo_Bicubic_2.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Old_photo/Old_photo_1/Old_Photo_Ours_2.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Old Photo Revival</div>
+            <div class="image">
+              <img src="./assets/images/Old_photo/Old_photo_23/Old_Photo_Bicubic_5.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Old_photo/Old_photo_23/Old_Photo_Ours_5.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Old Photo Revival</div>
+            <div class="image">
+              <img src="./assets/images/Old_photo/Old_photo_49/Old_Photo_Bicubic_2.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Old_photo/Old_photo_49/Old_Photo_Ours_2.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Old Photo Revival</div>
+            <div class="image">
+              <img src="./assets/images/Old_photo/Old_photo_45/Old_Photo_Bicubic_6.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Old_photo/Old_photo_45/Old_Photo_Ours_6.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Old Photo Revival</div>
+            <div class="image">
+              <img src="./assets/images/Old_photo/Old_photo_56/Old_Photo_Bicubic_4.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Old_photo/Old_photo_56/Old_Photo_Ours_4.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Old Photo Revival</div>
+            <div class="image">
+              <img src="./assets/images/Old_photo/Old_photo_57/Old_Photo_Bicubic_2.png" width="100%",>
+            </div>
+            <div class="image">
+              <img src="./assets/images/Old_photo/Old_photo_57/Old_Photo_Ours_2.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </div>
+</section>
+
+
+<!-- second row -->
+<section class="hero is-light is-small">
+  <div class="hero-body second-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Classic Film Rejuvenation</div>
+            <div class="image">
+              <img src="./assets/images/Movie/Movie_1/Movie_Bicubic_1.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Movie/Movie_1/Movie_Ours_1.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Classic Film Rejuvenation</div>
+            <div class="image">
+              <img src="./assets/images/Movie/Movie_2/Movie_Bicubic_2.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Movie/Movie_2/Movie_Ours_2.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Classic Film Rejuvenation</div>
+            <div class="image">
+              <img src="./assets/images/Movie/Movie_4/Movie_Bicubic_4.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Movie/Movie_4/Movie_Ours_4.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Classic Film Rejuvenation</div>
+            <div class="image">
+              <img src="./assets/images/Movie/Movie_8/Movie_Bicubic_8.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Movie/Movie_8/Movie_Ours_8.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Classic Film Rejuvenation</div>
+            <div class="image">
+              <img src="./assets/images/Movie/Movie_16/Movie_Bicubic_16.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Movie/Movie_16/Movie_Ours_16.png" width="100%">
+            </div>
+          </div>
+        </div>
+  
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="0.5556">
+            <div class="desc">Classic Film Rejuvenation</div>
+            <div class="image">
+              <img src="./assets/images/Movie/Movie_10/Movie_Bicubic_10.png" width="100%">
+            </div>
+            <div class="image">
+              <img src="./assets/images/Movie/Movie_10/Movie_Ours_10.png" width="100%">
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-fifty-sixths">
+      <!-- <div class="column"> -->
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p style="font-size: 1.5em;">
+            Faithful image super-resolution (SR) not only needs to recover images that appear realistic, 
+            similar to image generation tasks, but also requires that the restored images maintain fidelity and structural consistency with the input.
+            To this end, we propose a simple and effective method, named <b>FaithDiff</b>, to fully harness 
+            the impressive power of latent diffusion models (LDMs) for faithful image SR.
+            In contrast to existing diffusion-based SR methods that freeze the diffusion model pre-trained on high-quality images,
+            we propose to unleash the diffusion prior to identify useful information and recover faithful structures.
+            As there exists a significant gap between the features of degraded inputs and the noisy latent from the diffusion model,
+            we then develop an effective alignment module to explore useful features from degraded inputs to align well with the diffusion process.
+            Considering the indispensable roles and interplay of the encoder and diffusion model in LDMs,
+            we jointly fine-tune them in a unified optimization framework,
+            facilitating the encoder to extract useful features that coincide with diffusion process.
+            Extensive experimental results demonstrate that FaithDiff outperforms state-of-the-art methods, providing high-quality and faithful SR results.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-four-fifths"> -->
+      <div class="column is-fifty-sixths">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <p style="font-size: 1.5em;">
+            Our goal is to present an effective method to fully harness the power of LDM for image SR.
+            Specifically, we first employ the encoder of a pre-trained Variational Autoencoder (VAE) to map LQ inputs into the latent space and extract the corresponding LQ features.
+            Then, we develop an alignment module to effectively transfer useful information from the latent LQ features and ensure them align well with the diffusion process.
+            In addition, we incorporate text embeddings, extracted from image descriptions using a pre-trained text encoder, as auxiliary information. These embeddings are integrated with the latent features of the diffusion model through cross-attention layers to help explore useful structural information.
+            Furthermore, we propose a unified feature optimization strategy to jointly fine-tune the VAE encoder and the diffusion model, allowing the encoder to extract useful information from LQ images that facilitates the diffusion process while enabling the diffusion model to further refine the extracted feature for HQ image SR.
+            Finally, we obtain the restored image from the refined features by a pre-trained VAE decoder.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <!-- <div class="hero-body second-body"> -->
+    <div class="container">
+      <img src="./assets/images/FaithDiff_pipeline.png" />
+    </div>
+    
+  <!-- </div> -->
+</section>
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@InProceedings{zhou2023propainter,
+      title     = {{ProPainter}: Improving Propagation and Transformer for Video Inpainting},
+      author    = {Zhou, Shangchen and Li, Chongyi and Chan, Kelvin C.K and Loy, Chen Change},
+      booktitle = {Proceedings of IEEE International Conference on Computer Vision (ICCV)},
+      year      = {2023}
+    }</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="#" target="_blank">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/JyChen9811/FaithDiff/" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+      <a class="icon-link" href="#" target="_blank">
+        <img src="./assets/images/hf_black.png">
+      </a>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <div class="columns is-centered"><p>
+            This website template is borrowed from <a href="https://github.com/sczhou/ProPainter_website" target="_blank">source code</a>. 
+            Thank you!
+          </p></div>
+        </div>
+      </div>
+    </div>
+
+    <!--=================Visitor==========================-->
+    <div class="content has-text-centered" style="padding:0 0 0 0">
+      <img src='https://api.infinitescript.com/badgen/count?name=sczhou/ProPainter&ltext=Visitors&color=3977dd' alt='visitors'>
+    </div>
+
+  </div>
+</footer>
+
+  <!-- custom js file  -->
+  <!-- <script defer src="./assets/js/fontawesome.all.min.js"></script> -->
+  <script src="./assets/js/bulma-carousel.min.js"></script>
+  <script src="./assets/js/bulma-slider.min.js"></script>
+  <script src="./assets/js/index.js"></script>
+  <script src="./assets/js/jquery.event.move.js"></script>
+  <script src="./assets/js/jquery.twentytwenty.js"></script>
+  <script>
+  $(function(){
+    
+    $(".twentytwenty-container").twentytwenty();
+    // $(".twentytwenty-container", "#results-carousel").twentytwenty({default_offset_pct: 0.5, ratio: 0.5});
+  });
+  </script>
+</body>
+</html>
